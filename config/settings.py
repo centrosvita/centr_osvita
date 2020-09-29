@@ -68,10 +68,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-DATABASES = {
-    'default': env.db('DJANGO_DATABASE_URL')
-}
-
 DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',

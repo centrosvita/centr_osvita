@@ -3,8 +3,7 @@ version: '3.4'
 services:
   app:
     image: "${IMAGE}"
-    networks:
-      - backend
+    network_mode: host
     volumes:
       - /home/admin/public/:/home/admin/public/
     command: |

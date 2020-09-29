@@ -16,7 +16,7 @@ jobs:
 
     - uses: mr-smithers-excellent/docker-build-push@v3
       with:
-        image: centrosvita/production
+        image: centr_osvita/production
         registry: docker.pkg.github.com
         githubOrg: centrosvita
         dockerfile: docker/app/Dockerfile_production

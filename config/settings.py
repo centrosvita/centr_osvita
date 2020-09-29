@@ -18,7 +18,6 @@ env = environ.Env(
     DJANGO_ALLOWED_HOSTS=(list, []),
     DJANGO_STATIC_ROOT=(str, str(APPS_DIR('staticfiles'))),
     DJANGO_MEDIA_ROOT=(str, str(APPS_DIR('media'))),
-    DJANGO_DATABASE_URL=(str, 'postgis:///centr_osvita'),
     DJANGO_EMAIL_URL=(environ.Env.email_url_config, 'consolemail://'),
     DJANGO_DEFAULT_FROM_EMAIL=(str, 'admin@example.com'),
     DJANGO_EMAIL_BACKEND=(str, 'django.core.mail.backends.smtp.EmailBackend'),
@@ -29,6 +28,13 @@ env = environ.Env(
 
     DJANGO_HEALTH_CHECK_BODY=(str, 'Success'),
     DJANGO_USE_SILK=(bool, False),
+
+    # Database
+    POSTGRES_HOST=(str, 'db'),
+    POSTGRES_PORT=(int, 5432),
+    POSTGRES_DB=(str, ''),
+    POSTGRES_USER=(str, ''),
+    POSTGRES_PASSWORD=(str, ''),
 )
 
 environ.Env.read_env()
@@ -62,10 +68,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-DATABASES = {
-    'default': env.db('DJANGO_DATABASE_URL')
-}
-
 DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -91,6 +93,17 @@ LOCAL_APPS = (
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT'),
+    }
+}
 
 AUTH_USER_MODEL = 'users.User'
 ADMIN_URL = r'^admin/'

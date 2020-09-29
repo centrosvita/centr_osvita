@@ -1,0 +1,52 @@
+---
+
+- hosts: production
+  gather_facts: no
+  vars:
+    project:
+      name:           centrosvita
+      user:           admin
+      base_dir:       "/home/admin"
+      dir:            "/home/admin/centrosvita"
+
+  tasks:
+
+  - name: register compose file
+    local_action: command readlink -f ../production.yml
+    register: compose_path
+
+  - name: register docker-compose bin
+    shell: "which docker-compose"
+    register: compose_bin
+
+  - name: register docker bin
+    shell: "which docker"
+    register: docker_bin
+
+  - name: copy compose file to server
+    copy:
+      src: "{{ compose_path.stdout }}"
+      dest: "{{ project.dir }}"
+
+  - name: copy env for docker compose
+    copy:
+      content: "IMAGE={{image}}:{{tag}}"
+      dest: "{{project.dir}}/.env"     
+
+  - name: docker login
+    docker_login:
+      registry: docker.pkg.github.com
+      username: "{{actor}}"
+      password: "{{custom_token}}" 
+    no_log: true
+
+  - name: docker pull
+    shell: "docker pull {{ image }}:{{ tag }}"
+
+  - name: build docker compose
+    shell: "{{ compose_bin.stdout }} -f production.yml --project-name {{ project.name }} up -d --build"
+    args:
+      chdir: "{{ project.dir }}"
+
+  - name: clear old images
+    shell : "{{ docker_bin.stdout }} image prune -af"

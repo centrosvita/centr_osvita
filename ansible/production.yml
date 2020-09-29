@@ -41,7 +41,7 @@
     no_log: true
 
   - name: docker pull
-    shell: "docker pull {{ image }}:{{ tag }}"
+    shell: "docker pull docker.pkg.github.com/centrosvita/centr_osvita/production:{{ tag }}"
 
   - name: build docker compose
     shell: "{{ compose_bin.stdout }} -f production.yml --project-name {{ project.name }} up -d --build"

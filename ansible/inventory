@@ -1,0 +1,8 @@
+[production]
+cot.vn.ua ansible_ssh_user=admin ansible_ssh_port=22 
+
+[production:vars]
+server=cot.vn.ua
+
+
+

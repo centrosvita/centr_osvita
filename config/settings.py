@@ -83,6 +83,8 @@ THIRD_PARTY_APPS = (
     'django_extensions',
     'phonenumber_field',
     'polymorphic',
+    "ckeditor",
+    "ckeditor_uploader",
 )
 
 LOCAL_APPS = (
@@ -90,6 +92,7 @@ LOCAL_APPS = (
     'centr_osvita.users.apps.UsersConfig',
     'centr_osvita.profiles.apps.ProfilesConfig',
     'centr_osvita.quiz.apps.QuizConfig',
+    'centr_osvita.blogs.apps.BlogsConfig',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -272,3 +275,6 @@ if USE_SILK:
     SILKY_AUTHENTICATION = True  # User must login
     SILKY_AUTHORISATION = True  # User must have permissions
     SILKY_PERMISSIONS = lambda user: user.is_superuser
+
+#CKeditor
+CKEDITOR_UPLOAD_PATH = "uploads/"

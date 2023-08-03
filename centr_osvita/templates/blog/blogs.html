@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}Наші статті{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="content">
+        <div class="blog-list">
+            <h1>Блог</h1>
+            <div class="post-list__list">
+                {% for post in object_list %}
+                    {{ post.content |safe }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

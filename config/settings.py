@@ -84,6 +84,7 @@ THIRD_PARTY_APPS = (
     'phonenumber_field',
     'polymorphic',
     "ckeditor",
+    "ckeditor_uploader",
 )
 
 LOCAL_APPS = (

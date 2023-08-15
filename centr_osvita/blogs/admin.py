@@ -1,12 +1,12 @@
 from django import forms
 from django.contrib import admin
-from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from centr_osvita.blogs.models import Post
 
 
 class PostAdminForm(forms.ModelForm):
-    content = forms.CharField(widget=CKEditorWidget())
+    content = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Post
@@ -15,6 +15,7 @@ class PostAdminForm(forms.ModelForm):
 
 class PostAdmin(admin.ModelAdmin):
     form = PostAdminForm
+    list_display = ('title',)
 
 
 admin.site.register(Post, PostAdmin)

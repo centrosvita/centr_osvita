@@ -13,3 +13,4 @@ class Post(models.Model):
     content = models.TextField(_("Content"))
     slug = models.SlugField(_("Article url"))
     image = models.ImageField(_("Image"), upload_to=post_image_path)
+    publish = models.BooleanField(_("Publish"), default=True)

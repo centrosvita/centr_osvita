@@ -23,6 +23,7 @@
                                 <li><a href="{% url 'common:home' %}#subjects">Тренінги</a></li>
                                 <li {% if request.get_full_path == teachers_url %}class="menu-selected"{% endif %}><a href="{% url 'common:teachers' %}">Викладачі</a></li>
                                 <li><a href="{% url 'common:home' %}#contacts">Контакти</a></li>
+                                <li><a href="{% url 'blog:blogs' %}">Блог</a></li>
                                 {% if not user.is_authenticated %}
                                 <li><a href="{% url 'users:login' %}">Вхід</a></li>
                                 {% else %}

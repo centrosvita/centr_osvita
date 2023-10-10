@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ object.title}}{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="content">
+        <div class="blog-detail">
+            <h1>Блог</h1>
+            <div class="post-detail__detail">
+                    {{ object.content |safe }}
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

@@ -11,7 +11,9 @@
             <h1>Блог</h1>
             <div class="post-list__list">
                 {% for post in object_list %}
-                    {{ post.content |safe }}
+                    <h3><a href="{%url 'blog:blog-detail' post.slug%}">{{ post.title |safe }}</a></h3>
+                    <img src="{{ post.image.url }}" alt="{{ post.title}}" width="500" height="300">
+                    <hr>
                 {% endfor %}
             </div>
         </div>

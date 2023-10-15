@@ -7,14 +7,19 @@
 
 <main>
     <div class="content">
-        <div class="blog-list">
+        <div class="blog">
             <h1>Блог</h1>
-            <div class="post-list__list">
+            <div class="blog__list">
                 {% for post in object_list %}
                     {% if post.publish or user.is_authenticated and user.is_staff %}
-                    <h3><a href="{%url 'blog:blog-detail' post.slug%}">{{ post.title |safe }}</a></h3>
-                    <img src="{{ post.image.url }}" alt="{{ post.title}}" width="500" height="300">
-                    <hr>
+
+                        <div class="blog__item-wrapper">
+                            <a class="blog__item" href="{%url 'blog:blog-detail' post.slug%}">
+                                <div class="blog__item-title">{{ post.title |safe }}</div>
+                                <img src="{{ post.image.url }}" alt="{{ post.title}}" />
+                            </a>
+                        </div>
+
                     {% endif %}
                 {% endfor %}
             </div>

@@ -7,9 +7,9 @@
 
 <main>
     <div class="content">
-        <div class="blog-detail">
-            <h1>Блог</h1>
-            <div class="post-detail__detail">
+        <div class="article__wrapper">
+            <h1>{{ object.title |safe }}</h1>
+            <div class="article" id="blog-article">
                     {{ object.content |safe }}
             </div>
         </div>

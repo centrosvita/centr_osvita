@@ -75,3 +75,49 @@ if ($("#personal_data_agree") && $("#reg_submit")) {
     switchSubmitButtonStatus();
   });
 }
+
+const parseHtml = (html) => {
+  const regex = /<img.*?src="(.*?)".*?>/g;
+  const matches = html.match(regex);
+  if (matches) {
+    matches.forEach((match) => {
+      const regexSrc = /src="(.*?)"/g;
+      const regexClass = /class="(.*?)"/g;
+      const regxStyle = /style="(.*?)"/g;
+
+      const _src = regexSrc.exec(match);
+      const _class = regexClass.exec(match);
+      const _style = regxStyle.exec(match);
+
+      const src = _src ? _src[1] : '';
+      const className = _class ? _class[1] : 'image';
+      const style = _style ? _style[1] : '';
+
+      const newImg = `<div class="article__image-wrapper"><img src="${src}" class="${className}" style="${style}"></div>`;
+      html = html.replace(match, newImg);
+    });
+  }
+
+  //wrap all iframes into div witch class "video"
+    const regexIframe = /<iframe.*?src="(.*?)".*?><\/iframe>/g;
+    const matchesIframe = html.match(regexIframe);
+    if (matchesIframe) {
+        matchesIframe.forEach((match) => {
+            const regexSrc = /src="(.*?)"/g;
+            const _src = regexSrc.exec(match);
+            const src = _src ? _src[1] : '';
+            const newIframe = `<div class="d-flex justify-content-center"><div class="article__video-wrapper"><div class="article__video"><iframe src="${src}"></iframe></div></div></div>`;
+            html = html.replace(match, newIframe);
+        });
+    }
+
+
+  return html;
+}
+
+//search for #blog-article and parse inner html with function parseHtml and paste back
+if ($("#blog-article").length) {
+    let article = $("#blog-article");
+    let html = article.html();
+    article.html(parseHtml(html));
+}

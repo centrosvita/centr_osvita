@@ -175,3 +175,8 @@ node_modules/
 
 # Compass
 .sass-cache
+
+
+# other
+centr_osvita/staticfiles/
+package-lock.json

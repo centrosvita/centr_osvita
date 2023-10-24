@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from model_utils.models import TimeStampedModel
 import time
 
 
@@ -8,7 +9,7 @@ def post_image_path(instance, filename):
     return 'posts/{0}'.format(filename[:dot_position]+str(int(time.time()))+filename[dot_position:])
 
 
-class Post(models.Model):
+class Post(TimeStampedModel):
     title = models.CharField(_("Title"), max_length=255)
     content = models.TextField(_("Content"))
     slug = models.SlugField(_("Article url"))

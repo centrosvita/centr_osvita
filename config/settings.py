@@ -76,7 +76,8 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'django.contrib.postgres'
+    'django.contrib.postgres',
+    'django.contrib.sitemaps',
 )
 
 THIRD_PARTY_APPS = (

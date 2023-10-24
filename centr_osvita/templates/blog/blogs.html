@@ -8,7 +8,6 @@
 <main>
     <div class="content">
         <div class="blog">
-            <h1>Блог</h1>
             <div class="blog__list">
                 {% for post in object_list %}
                     {% if post.publish or user.is_authenticated and user.is_staff %}

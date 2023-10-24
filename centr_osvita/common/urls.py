@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.HomePageView.as_view(), name='home'),
+    url(r'^robots.txt/$', views.RobotsTxtView.as_view()),
     url(r'^teachers/$', views.OurTeachersView.as_view(), name='teachers'),
     url(r'^statistics/$', views.StatisticsView.as_view(), name='statistics'),
     url(r'^math/$', views.MathView.as_view(), name='math'),

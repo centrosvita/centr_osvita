@@ -161,6 +161,9 @@ cython_debug/
 
 .DS_Store
 
+# User-uploaded media
+centr_osvita/media/
+
 
 #/node modules
 node_modules/

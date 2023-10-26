@@ -27,6 +27,12 @@
           {% for common_quiz_question in object.common_quiz_questions%}
             <div class="quiz">
               <p>{{ forloop.counter }}. {{ common_quiz_question.question.text }}</p>
+                {% if common_quiz_question.question.image %}
+                    <div class="quiz-detail__image">
+                        <img src="{{ common_quiz_question.question.image.url }}"
+                             alt="Image"/>
+                    </div>
+                {% endif %}
 
             <!-- ADDING ANSWERS TO QUESTION-->
                 {% for answer in common_quiz_question.question.ordered_answers_by_position.all %}
@@ -71,6 +77,12 @@
           {% for order_quiz_question in object.order_quiz_questions%}
             <div class="quiz">
               <p>{{ object.common_quiz_questions.all|length|add:forloop.counter}}. {{ order_quiz_question.question.text }}</p>
+                {% if order_quiz_question.question.image %}
+                    <div class="quiz-detail__image">
+                        <img src="{{ order_quiz_question.question.image.url }}"
+                             alt="Image"/>
+                    </div>
+                {% endif %}
 
             <!-- ADDING ANSWERS TO QUESTION-->
                 {% for answer in order_quiz_question.question.ordered_answers_by_position_two.all %}
@@ -119,7 +131,12 @@
             {% for mapping_quiz_question in object.mapping_quiz_questions%}
               <div class="quiz">
                 <p>{{ forloop.counter|add:object.question_sum_common_order }}. {{ mapping_quiz_question.question.text }}</p>
-
+                {% if mapping_quiz_question.question.image %}
+                    <div class="quiz-detail__image">
+                        <img src="{{ mapping_quiz_question.question.image.url }}"
+                             alt="Image"/>
+                    </div>
+                {% endif %}
 
 
 

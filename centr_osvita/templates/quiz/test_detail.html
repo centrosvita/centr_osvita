@@ -14,7 +14,7 @@
                 </h4>
 <!--                Enter time here in seconds-->
                 <p id="time">{{ time_left }}</p>
-                <p id="questionnumber">Поточне питання:{{ current_question_number }}/{{ max_question_number }}</p>
+                <p id="questions-number">Поточне питання: {{ current_question_number }}/{{ max_question_number }}</p>
                 <p id="timer"></p>
                  <form action="{% url 'quiz:quiz-cancel' quiz.id%}" method="post">
                      {% csrf_token %}

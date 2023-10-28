@@ -5,6 +5,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.auth import logout, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.generic import View
 
 from centr_osvita.profiles.forms import ProfileRegisterForm
@@ -27,7 +28,7 @@ class RegisterView(View):
             profile_form.user = user
             profile_form.save()
             login(request, user)
-            return redirect('common:home')
+            return redirect(reverse('common:home') + '#subjects')
 
         return render(request, self.template_name, {'user_form': user_form, 'profile_form': profile_form})
 
@@ -45,7 +46,7 @@ class LoginView(View):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('common:home')
+            return redirect(reverse('common:home') + '#subjects')
         else:
             return render(request, self.template_name, {'form': form})
 

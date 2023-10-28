@@ -24,7 +24,7 @@
                                 <li {% if request.get_full_path == teachers_url %}class="menu-selected"{% endif %}><a href="{% url 'common:teachers' %}">Викладачі</a></li>
                                 <li><a href="{% url 'common:home' %}#contacts">Контакти</a></li>
                                 {% if not user.is_authenticated %}
-                                <li><a href="{% url 'users:login' %}">Вхід</a></li>
+                                <li><a href="{% url 'users:login' %}">Пройти тест</a></li>
                                 {% else %}
                                 <li><a href="{% url 'users:logout' %}">Вихід</a></li>
                                 {% endif %}

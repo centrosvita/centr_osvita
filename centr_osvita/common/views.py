@@ -73,3 +73,8 @@ class BiologyView(TemplateView):
 
 class ChemistryView(TemplateView):
     template_name = "web/chemistry.html"
+
+
+class RobotsTxtView(TemplateView):
+    template_name = "robots.txt"
+    content_type = 'text/plain'

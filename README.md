@@ -1,4 +1,4 @@
-# carwash
+# centrosvita
 ### Local Development
 #### Prerequisites
 - Docker ([Docker installation guide](https://docs.docker.com/install/#supported-platforms));
@@ -201,7 +201,6 @@ You can run the ```pytest``` with code ```coverage``` by typing in the following
 ```bash
 $ docker-compose -f local.yml run --rm app pytest --cov
 ```
-After that you will see coverage report just below tests results. Also you can get access to HTML version of the report on [pages](https://carwash.git.steelkiwi.com/backend/)
 
 To show coverage report with missing terms just use command:
 ```bash
@@ -240,9 +239,9 @@ Create the `app_name` app with `python manage.py startapp`
 ```bash
 $ docker-compose -f local.yml exec app python manage.py startapp app_name
 ``` 
-Manually move `app_name` folder to `carwash/apps/`
+Manually move `app_name` folder to `centrosvita/apps/`
 ```bash
-$ mv app_name carwash/apps/
+$ mv app_name centrosvita/apps/
 ```
 Add `app_name.apps.AppNameConfigClass`, on `LOCAL_APPS` on `config/settings.py`
 

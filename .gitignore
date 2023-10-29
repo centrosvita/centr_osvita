@@ -164,8 +164,18 @@ cython_debug/
 # User-uploaded media
 centr_osvita/media/
 
+# Vim
+*~
+*.swp
+*.swo
 
-#/node modules
+# npm
 node_modules/
+
+# Compass
+.sass-cache
+
+
+# other
 centr_osvita/staticfiles/
 package-lock.json

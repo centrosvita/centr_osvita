@@ -11,6 +11,8 @@ urlpatterns = [
     url(r'^', include("centr_osvita.common.urls", namespace="common")),
     url(r'^users/', include("centr_osvita.users.urls", namespace="users")),
     url(r'^quiz/', include("centr_osvita.quiz.urls", namespace="quiz")),
+    url(r'^blog/', include("centr_osvita.blogs.urls", namespace="blog")),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 if settings.USE_SILK:

@@ -22,7 +22,7 @@ jobs:
         dockerfile: docker/app/Dockerfile_production
         tag: ${{ github.sha }}
         username: ${{ github.actor }}
-        password: ${{ secrets.CUSTOM_TOKEN }} 
+        password: ${{ secrets.GITHUB_TOKEN }} 
 
   deploy:
     needs: [build]

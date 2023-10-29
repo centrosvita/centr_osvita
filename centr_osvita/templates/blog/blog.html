@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ object.title}}{% endblock %}
+
+{% block content %}
+
+<main>
+    <div class="content">
+        <div class="article__wrapper">
+            <h1>{{ object.title |safe }}</h1>
+            <div class="article" id="blog-article">
+                    {{ object.content |safe }}
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

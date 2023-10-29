@@ -95,6 +95,9 @@ class TestView(LoginRequiredMixin, View):
         context['question'] = self.current_question
         context['quiz'] = self.current_quiz
         context['formset'] = self.current_formset
+        context['current_question_number'] = self.current_quiz.quiz_questions.filter(
+            status=QuizQuestion.QUIZ_QUESTION_STATUS_TYPES.done).count() + 1
+        context['max_question_number'] = self.current_quiz.quiz_questions.count()
         if timezone.now() < self.current_quiz.created + \
                 timedelta(minutes=self.current_quiz.test.test_parameter.test_time):
             context['time_left'] = int((self.current_quiz.created +
@@ -169,6 +172,9 @@ class TestView(LoginRequiredMixin, View):
             context['object'] = self.instance
             context['question'] = self.current_question
             context['quiz'] = self.current_quiz
+            context['current_question_number'] = self.current_quiz.quiz_questions.filter(
+                status=QuizQuestion.QUIZ_QUESTION_STATUS_TYPES.done).count() + 1
+            context['max_question_number'] = self.current_quiz.quiz_questions.count()
             if timezone.now() < self.current_quiz.created + \
                     timedelta(minutes=self.current_quiz.test.test_parameter.test_time):
                 context['time_left'] = int((self.current_quiz.created +
@@ -177,8 +183,6 @@ class TestView(LoginRequiredMixin, View):
             else:
                 context['time_left'] = 0
             return render(request, self.template_name, context)
-
-
 
 
 class CancelTestView(LoginRequiredMixin, View):

@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Disallow: /users/
+Disallow: /quiz/
+Disallow: /admin/
+
+# Host
+Host: https://cot.vn.ua
+
+# Sitemaps
+Sitemap: https://cot.vn.ua/sitemap.xml

@@ -48,6 +48,12 @@
       right: 0;
     }
 
+    #questions-number {
+      position: absolute;
+      top: -40px;
+      right: 0;
+    }
+
     #time {
       display: none;
     }
@@ -55,7 +61,7 @@
 
   &__stop-btn {
     position: absolute;
-    top: -45px;
+    top: -15px;
     right: 0;
   }
 

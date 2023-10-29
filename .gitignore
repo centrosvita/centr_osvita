@@ -165,7 +165,6 @@ cython_debug/
 centr_osvita/media/
 
 # Vim
-
 *~
 *.swp
 *.swo

@@ -700,11 +700,15 @@ header {
       position: absolute;
       top: -65px;
       right: 0; }
+    .quiz-detail__head #questions-number {
+      position: absolute;
+      top: -40px;
+      right: 0; }
     .quiz-detail__head #time {
       display: none; }
   .quiz-detail__stop-btn {
     position: absolute;
-    top: -45px;
+    top: -15px;
     right: 0; }
   .quiz-detail__image {
     max-width: 600px; }

@@ -1,5 +1,27 @@
 {% extends "base.html" %} {% load static i18n %} {% block title %}Географія
-- ЦОТ{% endblock %} {% block content %}
+- ЦОТ{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Центр освітніх технологій - Географія" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Course",
+    "name": "Географія",
+    "description": "Підготовка учнів до здачі іспитів ЗНО та НМТ з географії для вступу в університет",
+    "url": "https://cot.vn.ua/geography/",
+    "educationalCredentialAwarded": "Студент",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Центр Освітніх Технологій",
+      "sameAs": "https://cot.vn.ua/"
+    }
+  }
+</script>
+{% endblock %}
+
+
+{% block content %}
 <main>
   <section class="subject-section geography-section">
     <div class="content">

@@ -1,5 +1,27 @@
 {% extends "base.html" %} {% load static i18n %} {% block title %}Англійська мова
-- ЦОТ{% endblock %} {% block content %}
+- ЦОТ{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Центр освітніх технологій - Англійська мова" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Course",
+    "name": "Англійська мова",
+    "description": "Підготовка учнів до здачі іспитів ЗНО та НМТ з англійської мови для вступу в університет",
+    "url": "https://cot.vn.ua/english/",
+    "educationalCredentialAwarded": "Студент",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Центр Освітніх Технологій",
+      "sameAs": "https://cot.vn.ua/"
+    }
+  }
+</script>
+{% endblock %}
+
+
+{% block content %}
 <main>
   <section class="subject-section english-section">
     <div class="content">

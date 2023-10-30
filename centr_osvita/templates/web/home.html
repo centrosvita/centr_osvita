@@ -1,5 +1,35 @@
 {% extends "base.html" %} {% load static i18n %} {% block title %}ЗНО/НМТ -
-ЦОТ{%endblock %} {% block content %}
+ЦОТ{%endblock %}
+
+<!-- block meta is empty -->
+{% block meta %}
+<meta name="description" content="Центр освітніх технологій - головна сторінка" />
+><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Центр освітнії технологій",
+    "description": "Підготовка до іспитів ЗНО та НМТ до вступу в університет",
+    "url": "https://cot.vn.ua",
+    "logo": "https://cot.vn.ua/static/images/COT_logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "вул. Князів Коріатовичів, 54",
+      "addressLocality": "Вінниця",
+      "addressRegion": "Вінницька область",
+      "postalCode": "21000",
+      "addressCountry": "Україна"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+30982072728",
+      "contactType": "Загальний контакт"
+    }
+  }
+ </script>
+{% endblock %}
+
+{% block content %}
 <main>
   <section class="top-section">
     <div class="top-section-inner">

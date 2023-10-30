@@ -1,5 +1,27 @@
 {% extends "base.html" %} {% load static i18n %} {% block title %}Українська мова
-- ЦОТ{% endblock %} {% block content %}
+- ЦОТ{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Центр освітніх технологій - Українська Мова" />
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Course",
+    "name": "Українська мова",
+    "description": "Підготовка учнів до здачі іспитів ЗНО та НМТ з української мови для вступу в університет",
+    "url": "https://cot.vn.ua/ukrainian/",
+    "educationalCredentialAwarded": "Студент",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": "Центр Освітніх Технологій",
+      "sameAs": "https://cot.vn.ua/"
+    }
+  }
+</script>
+{% endblock %}
+
+
+{% block content %}
 <main>
   <section class="subject-section ukrainian-section">
     <div class="content">

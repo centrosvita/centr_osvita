@@ -52,7 +52,7 @@
                 </tr>
                 {% for quiz_answer in common_quiz_question.quizanswer_set.all%}
                   <tr>
-                    {% for answer in common_quiz_question.question.answer_set.all%}
+                    {% for answer in common_quiz_question.question.ordered_answers_by_position.all%}
                         {% if quiz_answer.number == answer.number and quiz_answer.answer.correct == True %}
                           <td class="correct">
                             &#x2713;

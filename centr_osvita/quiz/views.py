@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from datetime import timedelta
 
-from centr_osvita.quiz.forms import AnswerForm, OrderAnswerForm, AnswerValidatedFormSet
+from centr_osvita.quiz.forms import AnswerForm, OrderAnswerForm, CommonAnswerForm, AnswerValidatedFormSet
 from centr_osvita.quiz.mixins import IsStaffRequiredMixin
 from centr_osvita.quiz.models import Quiz, Test, Question, QUESTION_TYPES, QuizCommonAnswer, \
     QuizOrderAnswer, OrderAnswer, QuizMappingAnswer, MappingAnswer, QuizQuestion, CommonAnswer
@@ -72,8 +72,8 @@ class TestView(LoginRequiredMixin, View):
         self.current_formset = None
         if self.current_question is not None:
             if self.current_question.type == QUESTION_TYPES.common:
-                CommonAnswerFormSet = formset_factory(AnswerForm)
-                self.current_formset = CommonAnswerFormSet()
+                CommonAnswerFormSet = formset_factory(CommonAnswerForm)
+                self.current_formset = CommonAnswerFormSet(form_kwargs={'answer_number': self.current_question.answer_set.count()})
             elif self.current_question.type == QUESTION_TYPES.order:
                 OrderAnswerFormSet = formset_factory(OrderAnswerForm, formset=AnswerValidatedFormSet,
                                                      extra=self.current_question.answer_set.count())
@@ -113,8 +113,8 @@ class TestView(LoginRequiredMixin, View):
         order_chain_list = ['first', 'second', 'third', 'fourth']
         if self.current_question is not None:
             if self.current_question.type == QUESTION_TYPES.common:
-                CommonAnswerFormSet = formset_factory(AnswerForm)
-                formset = CommonAnswerFormSet(request.POST)
+                CommonAnswerFormSet = formset_factory(CommonAnswerForm)
+                formset = CommonAnswerFormSet(data=request.POST, form_kwargs={'answer_number': self.current_question.answer_set.count()})
             elif self.current_question.type == QUESTION_TYPES.order:
                 OrderAnswerFormSet = formset_factory(OrderAnswerForm, formset=AnswerValidatedFormSet,
                                                      extra=self.current_question.answer_set.count())

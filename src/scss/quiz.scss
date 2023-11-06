@@ -26,6 +26,7 @@
 
 .quiz-detail {
   padding: 80px 0;
+  position: relative;
 
   h1 {
     margin-bottom: 30px;
@@ -40,17 +41,15 @@
   }
 
   &__head {
-    position: relative;
-
     #timer {
       position: absolute;
-      top: -65px;
+      top: 5px;
       right: 0;
     }
 
     #questions-number {
       position: absolute;
-      top: -40px;
+      top: 25px;
       right: 0;
     }
 
@@ -61,7 +60,7 @@
 
   &__stop-btn {
     position: absolute;
-    top: -15px;
+    top: 45px;
     right: 0;
   }
 
@@ -176,6 +175,7 @@
     font-weight: normal;
     font-size: 23px;
     font-style: italic;
+    margin-top: 5px;
   }
 
   &--end {

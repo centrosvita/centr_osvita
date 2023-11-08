@@ -15,9 +15,15 @@ class AnswerValidatedFormSet(BaseFormSet):
             raise forms.ValidationError(_('You should enter different values'))
 
 
-class AnswerForm(forms.Form):
-    position = forms.ChoiceField(choices=CommonAnswer.ORDER_COMMON, widget=forms.RadioSelect(),
-                                 initial=CommonAnswer.ORDER_COMMON.first)
+class MappingAnswerForm(forms.Form):
+    def __init__(self, answer_number, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        form_choices = Choices(*CommonAnswer.ORDER_COMMON._triples[:answer_number])
+        self.fields['position'] = forms.ChoiceField(
+            choices=form_choices,
+            widget=forms.RadioSelect(),
+            initial=CommonAnswer.ORDER_COMMON.first
+        )
 
 
 class OrderAnswerForm(forms.Form):

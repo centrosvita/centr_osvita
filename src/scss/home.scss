@@ -93,18 +93,19 @@
 
 .subjects-section {
   background-color: #eff2f7;
-  padding: 120px 0 60px 0;
+  padding: 30px 0 60px 0;
 }
 
 .subjects {
   h2 {
-    margin-bottom: 80px;
+    margin-bottom: 20px;
   }
 
   &__items {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    gap: 20px;
   }
 }
 
@@ -117,7 +118,6 @@
   border-radius: 16px;
   align-items: center;
   padding: 48px 24px 32px 24px;
-  margin: 0 10px 30px 10px;
 
   &__title {
     margin: 32px 0;

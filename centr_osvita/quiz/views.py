@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from datetime import timedelta
 
-from centr_osvita.quiz.forms import AnswerForm, OrderAnswerForm, CommonAnswerForm, AnswerValidatedFormSet
+from centr_osvita.quiz.forms import MappingAnswerForm, OrderAnswerForm, CommonAnswerForm, AnswerValidatedFormSet
 from centr_osvita.quiz.mixins import IsStaffRequiredMixin
 from centr_osvita.quiz.models import Quiz, Test, Question, QUESTION_TYPES, QuizCommonAnswer, \
     QuizOrderAnswer, OrderAnswer, QuizMappingAnswer, MappingAnswer, QuizQuestion, CommonAnswer
@@ -79,10 +79,10 @@ class TestView(LoginRequiredMixin, View):
                                                      extra=self.current_question.answer_set.count())
                 self.current_formset = OrderAnswerFormSet()
             else:
-                MappingAnswerFormSet = formset_factory(AnswerForm, formset=AnswerValidatedFormSet,
+                MappingAnswerFormSet = formset_factory(MappingAnswerForm, formset=AnswerValidatedFormSet,
                                                        extra=self.current_question.ordered_answers_by_position.exclude(
                                                            number_1=MappingAnswer.FIRST_CHAIN_TYPES.zero).count())
-                self.current_formset = MappingAnswerFormSet()
+                self.current_formset = MappingAnswerFormSet(form_kwargs={'answer_number': self.current_question.answer_set.count()})
 
         if not self.current_question:
             return redirect('quiz:quiz-finish', self.current_quiz.id)
@@ -120,10 +120,10 @@ class TestView(LoginRequiredMixin, View):
                                                      extra=self.current_question.answer_set.count())
                 formset = OrderAnswerFormSet(request.POST)
             else:
-                MappingAnswerFormSet = formset_factory(AnswerForm, formset=AnswerValidatedFormSet,
+                MappingAnswerFormSet = formset_factory(MappingAnswerForm, formset=AnswerValidatedFormSet,
                                                        extra=self.current_question.ordered_answers_by_position.exclude(
                                                            number_1=MappingAnswer.FIRST_CHAIN_TYPES.zero).count())
-                formset = MappingAnswerFormSet(request.POST)
+                formset = MappingAnswerFormSet(data=request.POST, form_kwargs={'answer_number': self.current_question.answer_set.count()})
 
         if formset.is_valid():
             quiz_question = QuizQuestion.objects.filter(quiz=self.current_quiz, question=self.current_question,
